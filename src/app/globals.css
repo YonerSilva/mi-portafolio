@@ -143,10 +143,10 @@ section {
 /* Animaciones */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(16px);
   transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
+    opacity 600ms ease,
+    transform 600ms ease;
 }
 
 .reveal.visible {
@@ -265,5 +265,11 @@ section {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
