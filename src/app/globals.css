@@ -1,7 +1,10 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
-* {
+/* Configuración general */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -10,26 +13,21 @@ html {
   overflow-y: initial;
 }
 
+html,
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
 /* Chrome, Edge, Safari y Opera */
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
 }
 
-/* Firefox */
-html,
-body {
-  scrollbar-width: none;
-}
-
-/* Internet Explorer y Edge antiguos */
-html,
-body {
-  -ms-overflow-style: none;
-}
-
 body {
   margin: 0;
+  min-width: 0;
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-jakarta), sans-serif;
@@ -45,10 +43,12 @@ a {
 
 p {
   white-space: pre-line;
+  overflow-wrap: anywhere;
 }
 
 section {
   width: 100%;
+  min-width: 0;
 }
 
 ::selection {
@@ -56,18 +56,23 @@ section {
   color: var(--surface);
 }
 
+/* Acciones y botones */
 .actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 14px;
   margin-top: 32px;
+  min-width: 0;
 }
 
 .button-primary,
 .button-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
+  max-width: 100%;
   padding: 13px 18px;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -87,8 +92,8 @@ section {
 
 .link {
   display: inline-block;
-  margin-bottom: 56px;
   margin-right: 20px;
+  margin-bottom: 56px;
   font-size: 14px;
   font: inherit;
   font-weight: 600;
@@ -100,13 +105,13 @@ section {
   color: var(--secondary-color);
 }
 
+/* Secciones de contenido */
 .content-section {
+  width: 100%;
   max-width: 1120px;
+  min-width: 0;
   margin: 0 auto;
-  padding-right: 32px;
-  padding-left: 32px;
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding: 64px 32px;
 }
 
 .content-section>p:last-child {
@@ -121,11 +126,13 @@ section {
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: -1.8px;
+  overflow-wrap: break-word;
 }
 
 .content-section h3 {
   margin-bottom: 18px;
   font-size: 24px;
+  overflow-wrap: break-word;
 }
 
 .paint {
@@ -133,6 +140,7 @@ section {
   color: whitesmoke;
 }
 
+/* Animaciones */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
@@ -153,25 +161,40 @@ section {
   letter-spacing: 1.8px;
 }
 
+/* Footer */
 .site-footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
-  padding-top: 26px;
-  padding-bottom: 26px;
-  padding-right: 32px;
-  padding-left: 32px;
+  width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 26px 32px;
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 12px;
-  width: 100%;
-  margin: 0 auto;
 }
 
+/* Tablets */
+@media (max-width: 1023px) {
+  .content-section {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+}
+
+/* Teléfonos */
 @media (max-width: 640px) {
   .actions {
     gap: 10px;
     margin-top: 26px;
+  }
+
+  .button-primary,
+  .button-secondary {
+    gap: 10px;
+    padding: 12px 14px;
   }
 
   .content-section,
@@ -180,11 +203,59 @@ section {
     padding-left: 20px;
   }
 
+  .content-section {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .content-section>p:last-child {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .content-section h2 {
+    font-size: clamp(28px, 7vw, 36px);
+    letter-spacing: -1px;
+  }
+
+  .content-section h3 {
+    font-size: 21px;
+  }
+
+  .link {
+    margin-right: 14px;
+    margin-bottom: 36px;
+  }
+
   .site-footer {
     flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 }
 
+/* Teléfonos pequeños */
+@media (max-width: 374px) {
+
+  .content-section,
+  .site-footer {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .button-primary,
+  .button-secondary {
+    gap: 8px;
+    padding: 11px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Accesibilidad: reducir movimiento */
 @media (prefers-reduced-motion: reduce) {
 
   *,
@@ -192,5 +263,7 @@ section {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

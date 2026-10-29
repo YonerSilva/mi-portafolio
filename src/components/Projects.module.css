@@ -2,10 +2,14 @@
      display: grid;
      grid-template-columns: repeat(2, minmax(0, 1fr));
      gap: 24px;
+     width: 100%;
+     min-width: 0;
      margin-top: 32px;
 }
 
 .card {
+     box-sizing: border-box;
+     min-width: 0;
      padding: 24px;
      border: 1px solid var(--border);
      border-radius: 12px;
@@ -14,12 +18,19 @@
 
 .card a {
      display: inline-block;
+     max-width: 100%;
      margin-top: 12px;
+     overflow-wrap: anywhere;
 }
 
 .card h3 {
      margin: 16px 0;
      color: var(--secondary-color);
+     overflow-wrap: anywhere;
+}
+
+.card p {
+     overflow-wrap: anywhere;
 }
 
 .card:hover {
@@ -30,28 +41,75 @@
      font-size: 12px;
      text-transform: uppercase;
      letter-spacing: 0.08em;
+     overflow-wrap: anywhere;
 }
 
 .technologies {
      display: flex;
      flex-wrap: wrap;
      gap: 8px;
+     min-width: 0;
      padding: 0;
      margin: 20px 0;
      list-style: none;
 }
 
 .technologies li {
+     box-sizing: border-box;
+     max-width: 100%;
      padding: 5px 9px;
      border: 1px solid var(--border);
      border-radius: 5px;
      font-size: 12px;
      background-color: var(--secondary-color);
      color: white;
+     overflow-wrap: anywhere;
 }
 
+/* Tablets y pantallas medianas */
+@media (max-width: 900px) {
+     .grid {
+          gap: 18px;
+     }
+
+     .card {
+          padding: 20px;
+     }
+}
+
+/* Teléfonos */
 @media (max-width: 640px) {
      .grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: minmax(0, 1fr);
+          gap: 16px;
+          margin-top: 24px;
+     }
+
+     .card {
+          padding: 20px;
+     }
+}
+
+/* Teléfonos pequeños */
+@media (max-width: 374px) {
+     .card {
+          padding: 16px;
+     }
+
+     .technologies {
+          gap: 6px;
+          margin: 16px 0;
+     }
+
+     .technologies li {
+          padding: 5px 7px;
+          font-size: 11px;
+     }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+     .card {
+          transition: none;
      }
 }

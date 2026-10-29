@@ -1,14 +1,14 @@
 .backToTop {
      position: fixed;
-     bottom: 24px;
      left: 50%;
-     transform: translate(-50%, 12px);
+     bottom: 24px;
      z-index: 1000;
 
      display: flex;
      align-items: center;
      justify-content: center;
 
+     box-sizing: border-box;
      width: 48px;
      height: 48px;
      padding: 0;
@@ -23,7 +23,8 @@
      opacity: 0;
      visibility: hidden;
      pointer-events: none;
-     transform: translateY(12px);
+
+     transform: translate(-50%, 12px);
 
      transition:
           opacity 200ms ease,
@@ -48,15 +49,43 @@
      outline-offset: 4px;
 }
 
-@media (max-width: 640px) {
+/* Tablets */
+@media (max-width: 1023px) {
      .backToTop {
-          right: 18px;
-          bottom: 18px;
-          width: 44px;
-          height: 44px;
+          bottom: 20px;
      }
 }
 
+/* Teléfonos */
+@media (max-width: 640px) {
+     .backToTop {
+          left: auto;
+          right: 18px;
+          bottom: 18px;
+
+          width: 44px;
+          height: 44px;
+
+          transform: translateY(12px);
+     }
+
+     .backToTop.visible {
+          transform: translateY(0);
+     }
+}
+
+/* Teléfonos pequeños */
+@media (max-width: 374px) {
+     .backToTop {
+          right: 14px;
+          bottom: 14px;
+
+          width: 42px;
+          height: 42px;
+     }
+}
+
+/* Accesibilidad */
 @media (prefers-reduced-motion: reduce) {
      .backToTop {
           transition: none;

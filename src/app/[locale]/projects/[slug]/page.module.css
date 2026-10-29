@@ -1,9 +1,9 @@
 .header {
-     max-width: 1120px;
+     box-sizing: border-box;
+     width: 100%;
+     max-width: 1184px;
      margin: 0 auto;
-     padding-top: 50px;
-     padding-right: 32px;
-     padding-left: 32px;
+     padding: 50px 32px 0;
 }
 
 .header h1 {
@@ -12,15 +12,19 @@
      line-height: 1.1;
      letter-spacing: -0.04em;
      color: var(--secondary-color);
+     overflow-wrap: anywhere;
 }
 
 .description {
      max-width: 680px;
      line-height: 1.8;
+     overflow-wrap: anywhere;
 }
 
 .gallerySection {
+     box-sizing: border-box;
      width: 100%;
+     min-width: 0;
      padding: 24px 0 48px;
 }
 
@@ -29,7 +33,8 @@
      grid-template-columns: repeat(2, minmax(0, 1fr));
      gap: clamp(12px, 2vw, 24px);
 
-     width: min(100% - 64px, 1120px);
+     box-sizing: border-box;
+     width: min(calc(100% - 64px), 1120px);
      margin-inline: auto;
 }
 
@@ -52,12 +57,12 @@
 .galleryItem img {
      display: block;
      width: 100%;
+     max-width: 100%;
      height: auto;
      object-fit: contain;
 
      transition: transform 300ms ease;
 }
-
 
 @media (hover: hover) and (pointer: fine) {
      .galleryItem:hover {
@@ -70,23 +75,61 @@
      }
 }
 
+/* Tabletas */
+@media (max-width: 900px) {
+     .header {
+          padding-top: 40px;
+     }
+
+     .gallery {
+          width: calc(100% - 48px);
+          gap: 16px;
+     }
+}
+
+/* Móviles */
 @media (max-width: 600px) {
+     .header {
+          padding: 32px 20px 0;
+     }
+
+     .header h1 {
+          margin: 16px 0;
+          font-size: clamp(32px, 8vw, 44px);
+     }
+
+     .description {
+          line-height: 1.7;
+     }
+
      .gallerySection {
-          padding-block: 16px 32px;
+          padding: 16px 0 32px;
      }
 
      .gallery {
           grid-template-columns: minmax(0, 1fr);
-          width: calc(100% - 32px);
+          width: calc(100% - 40px);
           gap: 16px;
      }
 
      .galleryItem {
           border-radius: 10px;
      }
+}
 
-     .galleryItem img {
-          transform: none;
+/* Móviles estrechos */
+@media (max-width: 374px) {
+     .header {
+          padding: 28px 16px 0;
+     }
+
+     .header h1 {
+          font-size: 30px;
+     }
+
+     .gallery {
+          width: calc(100% - 32px);
+          gap: 12px;
      }
 }
 

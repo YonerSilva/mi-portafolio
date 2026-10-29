@@ -1,24 +1,31 @@
 .container {
      width: 100%;
      min-width: 0;
+     box-sizing: border-box;
 }
 
 .content {
+     position: relative;
+     width: 100%;
+     min-width: 0;
      max-height: 160px;
      overflow: hidden;
-     position: relative;
+     overflow-wrap: anywhere;
      transition: max-height 0.4s ease;
 }
 
 .expanded .content {
      max-height: 2000px;
+     overflow: visible;
 }
 
 .button {
      display: inline-flex;
      align-items: center;
+     justify-content: center;
      gap: 6px;
 
+     max-width: 100%;
      margin-top: 12px;
      padding: 0;
 
@@ -28,6 +35,7 @@
      color: var(--secondary-color);
      font: inherit;
      font-weight: 600;
+     text-align: left;
 
      cursor: pointer;
      transition: opacity 0.2s ease;
@@ -43,6 +51,23 @@
      border-radius: 2px;
 }
 
+/* Teléfonos */
+@media (max-width: 640px) {
+     .content {
+          max-height: 180px;
+     }
+
+     .expanded .content {
+          max-height: 2000px;
+     }
+
+     .button {
+          margin-top: 10px;
+          font-size: 14px;
+     }
+}
+
+/* Accesibilidad */
 @media (prefers-reduced-motion: reduce) {
 
      .content,
