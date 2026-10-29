@@ -1,0 +1,19 @@
+.languageSwitcher {
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     min-width: 36px;
+     min-height: 36px;
+     padding: 5px 7px;
+     border: 1px solid var(--border);
+     border-radius: 4px;
+     font-size: 12px;
+     font-weight: 700;
+     background: var(--surface);
+     color: var(--foreground);
+}
+
+.languageSwitcher:hover {
+     color: var(--secondary-color);
+     border-color: var(--secondary-color);
+}

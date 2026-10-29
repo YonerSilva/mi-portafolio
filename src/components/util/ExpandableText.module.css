@@ -1,0 +1,52 @@
+.container {
+     width: 100%;
+     min-width: 0;
+}
+
+.content {
+     max-height: 160px;
+     overflow: hidden;
+     position: relative;
+     transition: max-height 0.4s ease;
+}
+
+.expanded .content {
+     max-height: 2000px;
+}
+
+.button {
+     display: inline-flex;
+     align-items: center;
+     gap: 6px;
+
+     margin-top: 12px;
+     padding: 0;
+
+     border: none;
+     background: transparent;
+
+     color: var(--secondary-color);
+     font: inherit;
+     font-weight: 600;
+
+     cursor: pointer;
+     transition: opacity 0.2s ease;
+}
+
+.button:hover {
+     opacity: 0.75;
+}
+
+.button:focus-visible {
+     outline: 2px solid currentColor;
+     outline-offset: 4px;
+     border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+     .content,
+     .button {
+          transition: none;
+     }
+}
