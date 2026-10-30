@@ -102,6 +102,16 @@ export default function Hero({ t }: { t: HeroText }) {
     <section id="home">
       <div className={styles.hero}>
         <div className={styles.presentation}>
+          <Image
+            src="/images/banner_presentation.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            quality={85}
+            className={styles.presentationBackground}
+          />
+
           <div className={styles.profilePhoto}>
             <Image
               src="/images/profile.png"
@@ -109,6 +119,7 @@ export default function Hero({ t }: { t: HeroText }) {
               width={180}
               height={180}
               priority
+              fetchPriority="high"
               className={styles.avatar}
             />
           </div>
